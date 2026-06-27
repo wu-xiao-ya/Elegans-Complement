@@ -1,4 +1,4 @@
-﻿package com.elegans.complement.feature.ecoaeextension;
+package com.elegans.complement.feature.ecoaeextension;
 
 import com.elegans.complement.ElegansComplement;
 import org.apache.logging.log4j.Level;

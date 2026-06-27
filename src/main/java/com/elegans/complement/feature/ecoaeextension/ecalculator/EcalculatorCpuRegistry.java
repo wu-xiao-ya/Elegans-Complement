@@ -1,4 +1,4 @@
-﻿package com.elegans.complement.feature.ecoaeextension.ecalculator;
+package com.elegans.complement.feature.ecoaeextension.ecalculator;
 
 import com.elegans.complement.feature.ecoaeextension.EcoaeextensionRuntime;
 

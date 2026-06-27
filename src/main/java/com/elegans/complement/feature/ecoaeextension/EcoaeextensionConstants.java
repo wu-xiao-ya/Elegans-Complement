@@ -1,4 +1,4 @@
-﻿package com.elegans.complement.feature.ecoaeextension;
+package com.elegans.complement.feature.ecoaeextension;
 
 public final class EcoaeextensionConstants {
     public static final String MOD_ID = "ecoaeextension";

@@ -1,4 +1,4 @@
-﻿package com.elegans.complement.feature.ecoaeextension;
+package com.elegans.complement.feature.ecoaeextension;
 
 import java.util.EnumMap;
 

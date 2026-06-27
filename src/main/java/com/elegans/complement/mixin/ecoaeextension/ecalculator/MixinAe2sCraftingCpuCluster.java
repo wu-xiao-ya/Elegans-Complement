@@ -1,9 +1,10 @@
-﻿package com.elegans.complement.mixin.ecoaeextension.ecalculator;
+package com.elegans.complement.mixin.ecoaeextension.ecalculator;
 
 import com.elegans.complement.feature.ecoaeextension.common.EcoAe2sBridgeRuntime;
 import com.elegans.complement.feature.ecoaeextension.ecalculator.EcalculatorBridgeState;
 import com.elegans.complement.feature.ecoaeextension.ecalculator.EcalculatorCpuRegistry;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.Coerce;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -12,6 +13,44 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(targets = "ae2.me.cluster.implementations.CraftingCPUCluster", remap = false)
 public abstract class MixinAe2sCraftingCpuCluster {
+    @Unique
+    private Object eleganscomplement$virtualCpuOwner;
+
+    @Unique
+    private Object eleganscomplement$threadCoreOwner;
+
+    @Unique
+    private long eleganscomplement$usedExtraStorage;
+
+    @Unique
+    public void novaeng_ec$setVirtualCPUOwner(@Coerce Object controller) {
+        this.eleganscomplement$virtualCpuOwner = controller;
+    }
+
+    @Unique
+    public void novaeng_ec$setThreadCore(@Coerce Object threadCore) {
+        this.eleganscomplement$threadCoreOwner = threadCore;
+    }
+
+    @Unique
+    public Object novaeng_ec$getController() {
+        return this.eleganscomplement$threadCoreOwner;
+    }
+
+    @Unique
+    public void novaeng_ec$setUsedExtraStorage(long usedExtraStorage) {
+        this.eleganscomplement$usedExtraStorage = usedExtraStorage;
+    }
+
+    @Unique
+    public long novaeng_ec$getUsedExtraStorage() {
+        return this.eleganscomplement$usedExtraStorage;
+    }
+
+    @Unique
+    public void novaeng_ec$markDestroyed() {
+        // Best effort bridge hook. We leave the actual destroyed flag to the target class logic.
+    }
 
     @Inject(method = "isActive", at = @At("HEAD"), cancellable = true, remap = false)
     private void eleganscomplement$bridgeEcoCpuActive(CallbackInfoReturnable<Boolean> cir) {
@@ -91,9 +130,8 @@ public abstract class MixinAe2sCraftingCpuCluster {
         if (!EcoAe2sBridgeRuntime.shouldApplyEcalculatorBridge()) {
             return;
         }
-        Object threadCore = EcalculatorCpuRegistry.getThreadCore(this);
-        if (threadCore != null) {
-            cir.setReturnValue(threadCore);
+        if (EcalculatorCpuRegistry.isKnownCpu(this)) {
+            cir.setReturnValue(null);
         }
     }
 
