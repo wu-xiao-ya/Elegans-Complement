@@ -1,0 +1,18 @@
+﻿{
+  "required": false,
+  "package": "com.elegans.complement.mixin.ecoaeextension.common",
+  "refmap": "mixins.eleganscomplement.refmap.json",
+  "compatibilityLevel": "JAVA_8",
+  "minVersion": "0.8",
+  "mixins": [
+    "MixinEcoCommonProxy",
+    "MixinEcoLateMixinLoader",
+    "MixinEcoRegistryBlocks",
+    "MixinEcoRegistryItems"
+  ],
+  "client": [],
+  "server": [],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

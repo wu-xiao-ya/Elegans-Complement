@@ -37,6 +37,25 @@ tasks.withType(JavaCompile).configureEach {
 
 repositories {
     mavenCentral()
+    maven {
+        name 'CleanroomMC'
+        url 'https://maven.cleanroommc.com'
+    }
+    maven {
+        name 'BlameJared'
+        url 'https://maven.blamejared.com'
+    }
+    exclusiveContent {
+        forRepository {
+            maven {
+                name 'CurseMaven'
+                url 'https://cursemaven.com'
+            }
+        }
+        filter {
+            includeGroup 'curse.maven'
+        }
+    }
 }
 
 minecraft {
@@ -48,6 +67,13 @@ minecraft {
     extraTweakClasses.addAll(propList('extra_tweak_classes'))
     extraRunJvmArguments.addAll(['-ea:' + group])
     extraRunJvmArguments.addAll(propList('extra_jvm_args'))
+}
+
+dependencies {
+    implementation modUtils.enableMixins('zone.rong:mixinbooter:10.7', 'mixins.eleganscomplement.refmap.json')
+    compileOnly 'CraftTweaker2:CraftTweaker2-API:4.1.20.715'
+    compileOnly 'CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.20.715'
+    runtimeOnly 'curse.maven:crafttweaker-239197:5354089'
 }
 
 processResources {

@@ -1,0 +1,19 @@
+{
+  "required": false,
+  "package": "com.elegans.complement.mixin.mmceae2s",
+  "refmap": "mixins.eleganscomplement.refmap.json",
+  "compatibilityLevel": "JAVA_8",
+  "minVersion": "0.8",
+  "mixins": [
+    "MixinMods",
+    "MixinModsAe2El",
+    "MixinModsAe2Fcr",
+    "MixinModIntegrationAE2",
+    "MixinModIntegrationTOP"
+  ],
+  "client": [],
+  "server": [],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

@@ -20,6 +20,55 @@ public class ElegansComplementConfig {
         })
         @LangKey("config.eleganscomplement.features.mmceControllerNbtPersistence")
         public boolean mmceControllerNbtPersistence = false;
+
+        @Comment({
+            "Enable Hatchery nest expansion recipes through Mixin / core functionality.",
+            "通过 Mixin / 核心功能启用 Hatchery 孵化巢扩展配方。"
+        })
+        @LangKey("config.eleganscomplement.features.hatcheryNestRecipes")
+        public boolean hatcheryNestRecipes = false;
+
+        @Comment({
+            "Enable CraftTweaker registration hooks for Hatchery nest recipes.",
+            "启用 Hatchery 孵化巢配方的 CraftTweaker 注册接口。"
+        })
+        @LangKey("config.eleganscomplement.features.hatcheryNestCraftTweakerRecipes")
+        public boolean hatcheryNestCraftTweakerRecipes = false;
+
+        @Comment({
+            "Disable MMCE legacy AE2 integration paths when AE2 Supergiant is detected, to prevent startup crashes.",
+            "检测到 AE2 Supergiant 时禁用 MMCE 旧式 AE2 集成链路，以避免启动崩溃。"
+        })
+        @LangKey("config.eleganscomplement.features.mmceAe2sStartupCompat")
+        public boolean mmceAe2sStartupCompat = true;
+
+        @Comment({
+            "Enable bridge patches for the external ecoaeextension mod when running with MMCE and AE2 Supergiant.",
+            "在与 MMCE 和 AE2 Supergiant 共存时，启用对外部 ecoaeextension 模组的桥接补丁。"
+        })
+        @LangKey("config.eleganscomplement.features.ecoAe2sBridge")
+        public boolean ecoAe2sBridge = false;
+
+        @Comment({
+            "Enable ecoaeextension ECalculator bridge patches.",
+            "启用 ecoaeextension 的 ECalculator 桥接补丁。"
+        })
+        @LangKey("config.eleganscomplement.features.ecoAe2sBridgeEcalculator")
+        public boolean ecoAe2sBridgeEcalculator = false;
+
+        @Comment({
+            "Enable ecoaeextension EFabricator bridge patches.",
+            "启用 ecoaeextension 的 EFabricator 桥接补丁。"
+        })
+        @LangKey("config.eleganscomplement.features.ecoAe2sBridgeEfabricator")
+        public boolean ecoAe2sBridgeEfabricator = false;
+
+        @Comment({
+            "Enable ecoaeextension EStorage bridge patches.",
+            "启用 ecoaeextension 的 EStorage 桥接补丁。"
+        })
+        @LangKey("config.eleganscomplement.features.ecoAe2sBridgeEstorage")
+        public boolean ecoAe2sBridgeEstorage = false;
     }
 
     private ElegansComplementConfig() {

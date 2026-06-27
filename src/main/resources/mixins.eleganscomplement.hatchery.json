@@ -1,0 +1,19 @@
+{
+  "required": false,
+  "package": "com.elegans.complement.mixin.hatchery",
+  "refmap": "mixins.eleganscomplement.refmap.json",
+  "compatibilityLevel": "JAVA_8",
+  "minVersion": "0.8",
+  "mixins": [
+    "EggNestBlockAccess",
+    "EggNestBlockMixin",
+    "EggNestInventoryMixin",
+    "EggNestTileEntityMixin",
+    "EggNestTileEntityDisplayMixin"
+  ],
+  "client": [],
+  "server": [],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
