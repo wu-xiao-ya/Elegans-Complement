@@ -51,3 +51,11 @@ jobs:
             build/reports/**
             build/tmp/**/patching.log
           if-no-files-found: ignore
+
+      - name: Upload jars
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-libs
+          path: build/libs/**
+          if-no-files-found: error
