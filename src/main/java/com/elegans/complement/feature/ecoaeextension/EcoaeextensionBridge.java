@@ -46,6 +46,43 @@ public final class EcoaeextensionBridge {
             boolean subEnabled = EcoaeextensionConfigAccess.isFeatureEnabled(target);
             boolean active = modLoaded && subEnabled;
 
+            if (active) {
+                switch (target) {
+                    case ECALCULATOR:
+                        if (!EcoaeextensionEnvironment.hasECalculatorLegacyAppengSupport()) {
+                            active = false;
+                            EcoaeextensionRuntime.logWarn(
+                                "Bridge",
+                                "Bridge inactive for {}: required legacy appeng crafting/network API is unavailable in current AE2S environment",
+                                target.getModId()
+                            );
+                        }
+                        break;
+                    case EFABRICATOR:
+                        if (!EcoaeextensionEnvironment.hasEFabricatorLegacyAppengSupport()) {
+                            active = false;
+                            EcoaeextensionRuntime.logWarn(
+                                "Bridge",
+                                "Bridge inactive for {}: required legacy appeng crafting/network API is unavailable in current AE2S environment",
+                                target.getModId()
+                            );
+                        }
+                        break;
+                    case ESTORAGE:
+                        if (!EcoaeextensionEnvironment.hasEStorageLegacyAppengSupport()) {
+                            active = false;
+                            EcoaeextensionRuntime.logWarn(
+                                "Bridge",
+                                "Bridge inactive for {}: required legacy appeng storage API is unavailable in current AE2S environment",
+                                target.getModId()
+                            );
+                        }
+                        break;
+                    default:
+                        break;
+                }
+            }
+
             ACTIVE_CACHE.put(target, active);
 
             if (active) {
@@ -84,8 +121,20 @@ public final class EcoaeextensionBridge {
         return isActive(EcoaeextensionEnvironment.TargetMod.ESTORAGE);
     }
 
+    public static boolean isEStorageRequested() {
+        return EcoaeextensionConfigAccess.isMasterEnabled()
+            && EcoaeextensionConfigAccess.isEStorageEnabled()
+            && EcoaeextensionEnvironment.isBaseModLoaded();
+    }
+
     public static boolean isAnyBridgeActive() {
         return isECalculatorActive() || isEFabricatorActive() || isEStorageActive();
+    }
+
+    public static boolean isAnyBridgeRequested() {
+        return EcoaeextensionConfigAccess.isMasterEnabled()
+            && EcoaeextensionConfigAccess.isAnySubFeatureEnabled()
+            && EcoaeextensionEnvironment.isBaseModLoaded();
     }
 
     public static int activeCount() {
