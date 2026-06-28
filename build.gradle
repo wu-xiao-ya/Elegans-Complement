@@ -26,13 +26,15 @@ base {
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(8)
+        languageVersion = JavaLanguageVersion.of(25)
     }
     withSourcesJar()
 }
 
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8'
+    sourceCompatibility = '1.8'
+    targetCompatibility = '1.8'
 }
 
 repositories {
@@ -56,6 +58,9 @@ repositories {
             includeGroup 'curse.maven'
         }
     }
+    flatDir {
+        dirs 'libs'
+    }
 }
 
 minecraft {
@@ -73,6 +78,8 @@ dependencies {
     implementation modUtils.enableMixins('zone.rong:mixinbooter:10.7', 'mixins.eleganscomplement.refmap.json')
     compileOnly 'CraftTweaker2:CraftTweaker2-API:4.1.20.715'
     compileOnly 'CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.20.715'
+    compileOnly files('libs/ModularMachinery-CE-2.3.3.jar')
+    compileOnly files('libs/AppliedEnergistics2-Supergiant-1.0.8.jar')
     runtimeOnly 'curse.maven:crafttweaker-239197:5354089'
 }
 
