@@ -13,7 +13,7 @@ public final class MmceAe2sEnvironment {
 
     public static boolean isAe2Loaded() {
         if (ae2Loaded == null) {
-            ae2Loaded = Loader.isModLoaded("appliedenergistics2");
+            ae2Loaded = Loader.isModLoaded("ae2") || Loader.isModLoaded("appliedenergistics2");
         }
         return ae2Loaded;
     }
