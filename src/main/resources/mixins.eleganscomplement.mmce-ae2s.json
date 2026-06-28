@@ -5,6 +5,7 @@
   "compatibilityLevel": "JAVA_8",
   "minVersion": "0.8",
   "mixins": [
+    "MixinMachineComponentManager",
     "MixinMods",
     "MixinModsAe2El",
     "MixinModsAe2Fcr",
