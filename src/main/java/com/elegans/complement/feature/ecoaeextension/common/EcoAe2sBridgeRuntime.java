@@ -9,7 +9,7 @@ public final class EcoAe2sBridgeRuntime {
     }
 
     public static boolean shouldApplyCommonBridge() {
-        return EcoaeextensionBridge.isAnyBridgeActive();
+        return EcoaeextensionBridge.isAnyBridgeRequested() && MmceAe2sEnvironment.isAe2sEnvironment();
     }
 
     public static boolean shouldApplyEcalculatorBridge() {
@@ -24,7 +24,15 @@ public final class EcoAe2sBridgeRuntime {
         return EcoaeextensionBridge.isEStorageActive();
     }
 
+    public static boolean shouldQueueEstorageCompat() {
+        return EcoaeextensionBridge.isEStorageRequested() && MmceAe2sEnvironment.isAe2sEnvironment();
+    }
+
+    public static boolean shouldApplyEstorageReplacement() {
+        return shouldQueueEstorageCompat() && !EcoaeextensionBridge.isEStorageActive();
+    }
+
     public static boolean shouldSuppressExternalLegacyAe2Mixins() {
-        return shouldApplyCommonBridge() && MmceAe2sEnvironment.isAe2sEnvironment();
+        return shouldApplyCommonBridge();
     }
 }
