@@ -10,9 +10,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public abstract class MixinModsAe2El {
 
     @Inject(method = "isPresent", at = @At("HEAD"), cancellable = true, remap = false)
-    private void eleganscomplement$disableAe2ElInAe2s(CallbackInfoReturnable<Boolean> cir) {
+    private void eleganscomplement$bridgeAe2ElInAe2s(CallbackInfoReturnable<Boolean> cir) {
         if (MmceAe2sGuard.shouldDisableLegacyAe2Path()) {
-            cir.setReturnValue(false);
+            cir.setReturnValue(true);
         }
     }
 }

@@ -43,7 +43,7 @@ public final class MmceAe2sEnvironment {
     }
 
     public static boolean isAe2sEnvironment() {
-        return isAe2Loaded() && !hasLegacyIpowerChannelState() && hasAe2sManagedGridNode();
+        return isAe2Loaded() && hasAe2sManagedGridNode();
     }
 
     private static boolean isClassPresent(String className) {

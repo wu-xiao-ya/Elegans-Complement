@@ -2,17 +2,21 @@
   "required": false,
   "package": "com.elegans.complement.mixin.mmceae2s",
   "refmap": "mixins.eleganscomplement.refmap.json",
-  "compatibilityLevel": "JAVA_8",
-  "minVersion": "0.8",
-  "mixins": [
-    "MixinMMWorldEventListener",
-    "MixinMachineComponentManager",
-    "MixinMods",
-    "MixinModsAe2El",
-    "MixinModsAe2Fcr",
-    "MixinModIntegrationAE2",
-    "MixinModIntegrationTOP"
-  ],
+    "compatibilityLevel": "JAVA_8",
+    "minVersion": "0.8",
+    "mixins": [
+        "MixinMods",
+        "MixinModsAe2El",
+        "MixinModsAe2Fcr",
+        "MixinModularMachineryPreInit",
+        "MixinModIntegrationAE2",
+        "MixinCommonProxy",
+        "MixinCommonProxyAeSecurity",
+        "MixinMachineComponentManager",
+        "MixinEventHandler",
+        "MixinMMWorldEventListener",
+        "MixinModIntegrationTOP"
+    ],
   "client": [],
   "server": [],
   "injectors": {
