@@ -24,6 +24,9 @@ public final class EcoaeextensionEnvironment {
     private static final EnumMap<TargetMod, Boolean> CACHE = new EnumMap<>(TargetMod.class);
     private static boolean cacheInvalidated = true;
     private static Boolean baseModLoaded;
+    private static Boolean ecalculatorLegacyAppengPresent;
+    private static Boolean efabricatorLegacyAppengPresent;
+    private static Boolean estorageLegacyAppengPresent;
 
     private EcoaeextensionEnvironment() {
     }
@@ -64,12 +67,54 @@ public final class EcoaeextensionEnvironment {
     public static void invalidateCache() {
         cacheInvalidated = true;
         baseModLoaded = null;
+        ecalculatorLegacyAppengPresent = null;
+        efabricatorLegacyAppengPresent = null;
+        estorageLegacyAppengPresent = null;
+    }
+
+    public static boolean hasECalculatorLegacyAppengSupport() {
+        if (ecalculatorLegacyAppengPresent == null) {
+            ecalculatorLegacyAppengPresent = isClassPresent("appeng.me.cluster.implementations.CraftingCPUCluster")
+                && isClassPresent("appeng.me.helpers.AENetworkProxy")
+                && isClassPresent("appeng.tile.inventory.AppEngInternalInventory");
+        }
+        return ecalculatorLegacyAppengPresent;
+    }
+
+    public static boolean hasEFabricatorLegacyAppengSupport() {
+        if (efabricatorLegacyAppengPresent == null) {
+            efabricatorLegacyAppengPresent = isClassPresent("appeng.api.AEApi")
+                && isClassPresent("appeng.util.item.ItemList")
+                && isClassPresent("appeng.me.helpers.AENetworkProxy")
+                && isClassPresent("appeng.tile.inventory.AppEngInternalInventory");
+        }
+        return efabricatorLegacyAppengPresent;
+    }
+
+    public static boolean hasEStorageLegacyAppengSupport() {
+        if (estorageLegacyAppengPresent == null) {
+            estorageLegacyAppengPresent = isClassPresent("appeng.api.storage.ICellContainer")
+                && isClassPresent("appeng.me.helpers.AENetworkProxy")
+                && isClassPresent("appeng.api.storage.IMEInventoryHandler")
+                && isClassPresent("appeng.me.storage.AbstractCellInventory");
+        }
+        return estorageLegacyAppengPresent;
     }
 
     private static void refresh() {
+        boolean loaded = isBaseModLoaded();
         for (TargetMod target : TargetMod.values()) {
-            CACHE.put(target, isBaseModLoaded());
+            CACHE.put(target, loaded);
         }
         cacheInvalidated = false;
+    }
+
+    private static boolean isClassPresent(String className) {
+        try {
+            Class.forName(className, false, EcoaeextensionEnvironment.class.getClassLoader());
+            return true;
+        } catch (ClassNotFoundException | LinkageError ex) {
+            return false;
+        }
     }
 }
