@@ -4,7 +4,17 @@
   "refmap": "mixins.eleganscomplement.refmap.json",
   "compatibilityLevel": "JAVA_8",
   "minVersion": "0.8",
-  "mixins": [],
+  "mixins": [
+    "MixinEstorageCellDriveLifecycle",
+    "MixinEstorageChestFilter",
+    "MixinEstorageControllerLifecycle",
+    "MixinEstorageDriveFilter",
+    "MixinEstorageEnergyCellLifecycle",
+    "MixinReplacementEStorageCellDriveBlock",
+    "MixinReplacementEStorageEnergyCellBlock",
+    "MixinReplacementEStorageMeChannelBlock",
+    "MixinEstorageMeChannelLifecycle"
+  ],
   "client": [],
   "server": [],
   "injectors": {

@@ -43,6 +43,13 @@ public class ElegansComplementConfig {
         public boolean mmceAe2sStartupCompat = true;
 
         @Comment({
+            "Guard RandomComplement's legacy AE2 and HEI hooks when running with AE2 Supergiant / Had Enough Items.",
+            "在 AE2 Supergiant / Had Enough Items 环境中保护 RandomComplement 的旧 AE2 与 HEI 钩子。"
+        })
+        @LangKey("config.eleganscomplement.features.randomComplementAe2sHeiCompat")
+        public boolean randomComplementAe2sHeiCompat = false;
+
+        @Comment({
             "Enable bridge patches for the external ecoaeextension mod when running with MMCE and AE2 Supergiant.",
             "在与 MMCE 和 AE2 Supergiant 共存时，启用对外部 ecoaeextension 模组的桥接补丁。"
         })

@@ -79,7 +79,7 @@ dependencies {
     compileOnly 'CraftTweaker2:CraftTweaker2-API:4.1.20.715'
     compileOnly 'CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.20.715'
     compileOnly files('libs/ModularMachinery-CE-2.3.3.jar')
-    compileOnly files('libs/AppliedEnergistics2-Supergiant-1.0.8.jar')
+    compileOnly files('libs/AppliedEnergistics2-Supergiant-1.0.10+be5f5ace2.jar')
     runtimeOnly 'curse.maven:crafttweaker-239197:5354089'
 }
 

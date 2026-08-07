@@ -4,7 +4,13 @@
   "refmap": "mixins.eleganscomplement.refmap.json",
   "compatibilityLevel": "JAVA_8",
   "minVersion": "0.8",
-  "mixins": [],
+  "mixins": [
+    "MixinEfabricatorControllerAsyncTick",
+    "MixinEfabricatorControllerLifecycle",
+    "MixinEfabricatorCraftingServiceQueries",
+    "MixinEfabricatorPatternBusLifecycle",
+    "MixinEfabricatorWorkerDoWork"
+  ],
   "client": [],
   "server": [],
   "injectors": {
